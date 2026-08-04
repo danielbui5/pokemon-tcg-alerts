@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-04T04:15:09.772Z",
+  "generatedAt": "2026-08-04T04:22:23.322Z",
   "items": [
     {
       "id": "set-me5",
@@ -31,16 +31,6 @@
       "region": "GLOBAL",
       "url": "https://www.pokeguardian.com/3231721_pokemon-tcg-mega-evolution-delta-reign-teased-november-release",
       "notes": "Auto-extracted from a news article — verify before relying on it. The next set this year, called Mega Evolution — Delta Reign  is officially teased in a video. This set is scheduled for release on  November 6, 2026."
-    },
-    {
-      "id": "news-pokeguardian-3172159-0",
-      "name": "Mega Evolution - Chaos Rising Full Digital Set List Revealed",
-      "releaseDate": "2026-05-22",
-      "kind": "release",
-      "source": "news",
-      "region": "GLOBAL",
-      "url": "https://www.pokeguardian.com/3172159_mega-evolution-chaos-rising-full-digital-set-list-revealed",
-      "notes": "Auto-extracted from a news article — verify before relying on it. Mega Evolution - Chaos Rising releases on May 22, 2026."
     }
   ]
 }

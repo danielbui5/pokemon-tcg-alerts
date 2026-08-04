@@ -30,6 +30,13 @@ const SITEMAP_URL = "https://www.pokeguardian.com/sitemap.xml";
 const MAX_ARTICLES = 25;
 const REQUEST_DELAY_MS = 1200;
 
+// Article recency (which articles we bother fetching) is separate from
+// release-date relevance (whether an extracted date is still worth showing).
+// An article in the top MAX_ARTICLES can still reference an old release —
+// e.g. a retrospective piece — so this is a second, independent filter on
+// the extracted date itself. Matches the window official.js uses.
+const RELEVANCE_WINDOW_DAYS = 21;
+
 const PRODUCT_KEYWORDS =
   "(Elite Trainer Box|Booster Bundle|Booster Box|Binder Collection|Poster Collection|Mini Tin|Tech Sticker Collection|Illustration Collection|Premium Collection|Collection|Build ?& ?Battle Box|Deck)";
 
@@ -94,6 +101,12 @@ function titleFromHtml(html) {
   return m ? m[1].replace(/\s*\|\s*PokeGuardian.*$/i, "").trim() : null;
 }
 
+function isWithinRelevanceWindow(releaseDate) {
+  const cutoff = new Date();
+  cutoff.setUTCDate(cutoff.getUTCDate() - RELEVANCE_WINDOW_DAYS);
+  return releaseDate >= cutoff.toISOString().slice(0, 10);
+}
+
 async function getRecentArticleUrls() {
   const xml = await fetchText(SITEMAP_URL);
   const ids = new Map(); // id -> url (dedupe; only bare top-level article URLs)
@@ -122,7 +135,7 @@ function extractItemsFromArticle({ id, url, html }) {
   let idx = 0;
   while ((match = STRUCTURED_RE.exec(bodyText))) {
     const releaseDate = parseEnglishDate(match[2]);
-    if (!releaseDate) continue;
+    if (!releaseDate || !isWithinRelevanceWindow(releaseDate)) continue;
     const productName = match[1].replace(/\s+/g, " ").trim();
     items.push({
       id: `news-pokeguardian-${id}-${idx++}`,
@@ -140,7 +153,7 @@ function extractItemsFromArticle({ id, url, html }) {
   if (items.length === 0) {
     const dm = description.match(FALLBACK_DATE_RE);
     const releaseDate = dm ? parseEnglishDate(dm[1]) : null;
-    if (releaseDate) {
+    if (releaseDate && isWithinRelevanceWindow(releaseDate)) {
       items.push({
         id: `news-pokeguardian-${id}-0`,
         name: title,

@@ -5,13 +5,18 @@
 
 const POKEAPI_SETS = "https://api.pokemontcg.io/v2/sets?orderBy=-releaseDate&pageSize=40";
 
+// How many days past release a set stays in the feed before being presumed
+// no-longer-available. Matches the window used in news-pokeguardian.js and
+// enforced again client-side in store.js's getMergedReleases().
+const RELEVANCE_WINDOW_DAYS = 21;
+
 export default async function official() {
   const res = await fetch(POKEAPI_SETS, { headers: { Accept: "application/json" } });
   if (!res.ok) throw new Error(`Pokémon TCG API ${res.status}`);
   const json = await res.json();
 
   const cutoff = new Date();
-  cutoff.setDate(cutoff.getDate() - 21);
+  cutoff.setDate(cutoff.getDate() - RELEVANCE_WINDOW_DAYS);
   const cutoffISO = cutoff.toISOString().slice(0, 10);
 
   return (json.data || [])

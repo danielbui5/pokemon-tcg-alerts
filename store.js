@@ -17,6 +17,12 @@
 //     region, retailer?, url?, image?, notes?
 //   }
 
+// How many days past its release date an auto-fetched item stays visible.
+// Past that, it's presumed sold out/no-longer-restockable and dropped from
+// the merged list (manual entries are exempt — those are user-controlled,
+// with their own dismiss button). Doesn't affect future-dated items.
+const RELEVANCE_WINDOW_DAYS = 21;
+
 const DEFAULT_SETTINGS = {
   region: "AU",
   // Optional: URL of a feed.json published by the backend scraper (server/).
@@ -89,6 +95,15 @@ async function getMergedReleases({ includeDismissed = false } = {}) {
   }));
 
   if (!includeDismissed) merged = merged.filter((r) => !r.dismissed);
+
+  // Drop stale auto-fetched items regardless of which source produced them —
+  // a single enforcement point so no adapter can regress this by omission.
+  const cutoff = new Date();
+  cutoff.setDate(cutoff.getDate() - RELEVANCE_WINDOW_DAYS);
+  const cutoffISO = cutoff.toISOString().slice(0, 10);
+  merged = merged.filter(
+    (r) => r.source === "manual" || !r.releaseDate || r.releaseDate >= cutoffISO
+  );
 
   merged.sort((a, b) => {
     const da = a.releaseDate || "9999-12-31";
