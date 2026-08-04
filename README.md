@@ -18,15 +18,22 @@ calendar event) so you know when to buy or keep an eye out.
   Direct retailer scraping (Kmart / Target / EB Games) doesn't work — verified
   2026-08-03, they're either behind a Cloudflare JS challenge or their
   `robots.txt` explicitly disallows it. Instead, the backend's
-  `news-pokeguardian` adapter mines **public news articles** for release-date
-  mentions — a legitimate alternative that sidesteps the retailer walls
-  entirely. See [`server/README.md`](server/README.md) for exactly what's
-  blocked vs. what works, and why.
+  backend mines **public news articles** for release-date mentions instead —
+  a legitimate alternative that sidesteps the retailer walls entirely, from
+  both a global site (PokeGuardian) and an AU-specific one (Drop Store
+  Collectables, `news-dropstore`). See [`server/README.md`](server/README.md)
+  for exactly what's blocked vs. what works, and why — including which AU
+  restock-tracker sites were deliberately left out (they're paid products,
+  not free content, so using them needs your own account, not scraping).
 - **Calendar export.** Every item has an "Add to Google Calendar" link and a
-  `.ics` download for Apple Calendar / Outlook.
+  `.ics` download for Apple Calendar / Outlook. Click an item's name to open
+  the original source it came from.
 - Items are tagged by confidence: **Official** (structured API data),
   **News · unverified** (regex-extracted from an article — double check it),
   a retailer name (from a hand-fed feed), or **You** (manually added).
+- Auto-fetched items older than 21 days past their release date are hidden
+  (presumed sold out) — configurable via `RELEVANCE_WINDOW_DAYS` in
+  `store.js`. Your own manual entries are exempt.
 
 ## Load it in Chrome
 

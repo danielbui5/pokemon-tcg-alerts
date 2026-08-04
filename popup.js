@@ -74,9 +74,13 @@ async function render() {
     const item = document.createElement("div");
     item.className = "release-item" + (r.kind === "restock" ? " restock" : "");
     const gcal = googleCalUrl(r);
+    const starPrefix = r.starred ? "★ " : "";
+    const nameHtml = r.url
+      ? `<a class="name-link" href="${escapeHtml(r.url)}" target="_blank" rel="noopener" title="Open the original source">${starPrefix}${escapeHtml(r.name)}</a>`
+      : `${starPrefix}${escapeHtml(r.name)}`;
     item.innerHTML = `
       <div class="info">
-        <div class="name">${r.starred ? "★ " : ""}${escapeHtml(r.name)} ${sourceBadge(r)}</div>
+        <div class="name">${nameHtml} ${sourceBadge(r)}</div>
         <div class="date">${formatDate(r.releaseDate)} · <b>${dueLabel(r.releaseDate)}</b>${r.kind === "restock" ? " · restock" : ""}</div>
         ${r.notes ? `<div class="notes">${escapeHtml(r.notes)}</div>` : ""}
       </div>

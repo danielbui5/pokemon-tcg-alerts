@@ -19,76 +19,26 @@
 //      embed an incrementing numeric ID, which is a reliable recency proxy —
 //      confirmed against known chronology during testing).
 //   2. Fetch each article (slowly — politeness delay between requests).
-//   3. Extract dates two ways:
+//   3. Extract dates two ways (see lib/text-mining.js):
 //        a. Structured: "<Product name> ... Release Date: <Month D, Year>"
 //           — appears in PokeGuardian's seasonal "release guide" articles.
 //        b. Fallback: a release/launch date sentence in the og:description
 //           meta tag, tied to the article title as a whole.
+//      Both are filtered to RELEVANCE_WINDOW_DAYS — an article can be recent
+//      while referencing an old release (e.g. a retrospective piece).
 //   4. Classify kind: "restock" if restock language appears, else "release".
+
+import {
+  RESTOCK_RE,
+  stripHtmlToText,
+  extractStructuredReleases,
+  extractFallbackRelease,
+  sleep
+} from "../lib/text-mining.js";
 
 const SITEMAP_URL = "https://www.pokeguardian.com/sitemap.xml";
 const MAX_ARTICLES = 25;
 const REQUEST_DELAY_MS = 1200;
-
-// Article recency (which articles we bother fetching) is separate from
-// release-date relevance (whether an extracted date is still worth showing).
-// An article in the top MAX_ARTICLES can still reference an old release —
-// e.g. a retrospective piece — so this is a second, independent filter on
-// the extracted date itself. Matches the window official.js uses.
-const RELEVANCE_WINDOW_DAYS = 21;
-
-const PRODUCT_KEYWORDS =
-  "(Elite Trainer Box|Booster Bundle|Booster Box|Binder Collection|Poster Collection|Mini Tin|Tech Sticker Collection|Illustration Collection|Premium Collection|Collection|Build ?& ?Battle Box|Deck)";
-
-const STRUCTURED_RE = new RegExp(
-  `([A-Z][A-Za-z0-9&\\-' ]{3,70}?${PRODUCT_KEYWORDS})\\s*Release Date:\\s*([A-Z][a-z]+ \\d{1,2},?\\s*\\d{4})`,
-  "g"
-);
-const FALLBACK_DATE_RE =
-  /(?:release[sd]?|launch(?:es|ed)?|hits shelves)\s*(?:on)?\s*([A-Z][a-z]+ \d{1,2},?\s*\d{4})/i;
-const RESTOCK_RE = /\b(restock|back in stock|back-in-stock)\b/i;
-
-function sleep(ms) {
-  return new Promise((r) => setTimeout(r, ms));
-}
-
-const MONTHS = {
-  january: 1, february: 2, march: 3, april: 4, may: 5, june: 6,
-  july: 7, august: 8, september: 9, october: 10, november: 11, december: 12
-};
-
-function parseEnglishDate(str) {
-  // "July 18, 2025" / "November 6 2026" -> "YYYY-MM-DD".
-  // Parses the calendar components directly (no Date/toISOString round-trip —
-  // that goes through local-time interpretation then UTC conversion, which
-  // silently shifts the date by a day in positive-UTC-offset timezones).
-  const m = str.match(/([A-Za-z]+)\s+(\d{1,2}),?\s*(\d{4})/);
-  if (!m) return null;
-  const month = MONTHS[m[1].toLowerCase()];
-  if (!month) return null;
-  const day = Number(m[2]);
-  const year = Number(m[3]);
-  return `${year}-${String(month).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
-}
-
-async function fetchText(url) {
-  const res = await fetch(url, {
-    headers: {
-      "User-Agent": "Mozilla/5.0 (compatible; pokemon-tcg-alerts-news/1.0; personal reminder tool)",
-      Accept: "text/html"
-    }
-  });
-  if (!res.ok) throw new Error(`${url} -> ${res.status}`);
-  return res.text();
-}
-
-function stripHtmlToText(html) {
-  let t = html.replace(/<script[^>]*>[\s\S]*?<\/script>/gi, " ");
-  t = t.replace(/<style[^>]*>[\s\S]*?<\/style>/gi, " ");
-  t = t.replace(/<[^>]+>/g, " ");
-  t = t.replace(/&amp;/g, "&").replace(/&nbsp;/g, " ").replace(/&#39;/g, "'");
-  return t.replace(/\s+/g, " ").trim();
-}
 
 function extractOgDescription(html) {
   let m = html.match(/<meta[^>]*property="og:description"[^>]*content="([^"]*)"/);
@@ -101,10 +51,15 @@ function titleFromHtml(html) {
   return m ? m[1].replace(/\s*\|\s*PokeGuardian.*$/i, "").trim() : null;
 }
 
-function isWithinRelevanceWindow(releaseDate) {
-  const cutoff = new Date();
-  cutoff.setUTCDate(cutoff.getUTCDate() - RELEVANCE_WINDOW_DAYS);
-  return releaseDate >= cutoff.toISOString().slice(0, 10);
+async function fetchText(url) {
+  const res = await fetch(url, {
+    headers: {
+      "User-Agent": "Mozilla/5.0 (compatible; pokemon-tcg-alerts-news/1.0; personal reminder tool)",
+      Accept: "text/html"
+    }
+  });
+  if (!res.ok) throw new Error(`${url} -> ${res.status}`);
+  return res.text();
 }
 
 async function getRecentArticleUrls() {
@@ -129,16 +84,9 @@ function extractItemsFromArticle({ id, url, html }) {
   const isRestock = RESTOCK_RE.test(bodyText);
   const items = [];
 
-  // Structured per-product "Release Date:" mentions (release guides etc).
-  let match;
-  STRUCTURED_RE.lastIndex = 0;
-  let idx = 0;
-  while ((match = STRUCTURED_RE.exec(bodyText))) {
-    const releaseDate = parseEnglishDate(match[2]);
-    if (!releaseDate || !isWithinRelevanceWindow(releaseDate)) continue;
-    const productName = match[1].replace(/\s+/g, " ").trim();
+  extractStructuredReleases(bodyText).forEach(({ productName, releaseDate }, idx) => {
     items.push({
-      id: `news-pokeguardian-${id}-${idx++}`,
+      id: `news-pokeguardian-${id}-${idx}`,
       name: productName,
       releaseDate,
       kind: isRestock ? "restock" : "release",
@@ -147,13 +95,11 @@ function extractItemsFromArticle({ id, url, html }) {
       url,
       notes: `Auto-extracted from a news article — verify before relying on it. Source: ${title}`
     });
-  }
+  });
 
-  // Fallback: one article-level date from the description, if nothing structured found.
   if (items.length === 0) {
-    const dm = description.match(FALLBACK_DATE_RE);
-    const releaseDate = dm ? parseEnglishDate(dm[1]) : null;
-    if (releaseDate && isWithinRelevanceWindow(releaseDate)) {
+    const releaseDate = extractFallbackRelease(description);
+    if (releaseDate) {
       items.push({
         id: `news-pokeguardian-${id}-0`,
         name: title,

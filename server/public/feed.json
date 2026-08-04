@@ -1,17 +1,6 @@
 {
-  "generatedAt": "2026-08-04T04:22:23.322Z",
+  "generatedAt": "2026-08-04T04:56:38.568Z",
   "items": [
-    {
-      "id": "set-me5",
-      "name": "Pitch Black (Mega Evolution)",
-      "releaseDate": "2026-07-17",
-      "kind": "release",
-      "source": "official",
-      "region": "GLOBAL",
-      "url": "https://www.pokemon.com/us/pokemon-tcg/",
-      "image": "https://images.scrydex.com/pokemon/me5-logo/logo",
-      "notes": "Official English set · 120 cards"
-    },
     {
       "id": "news-pokeguardian-3271194-0",
       "name": "Mega Evolution - Pitch Black Full Digital Set List Revealed",
@@ -31,6 +20,26 @@
       "region": "GLOBAL",
       "url": "https://www.pokeguardian.com/3231721_pokemon-tcg-mega-evolution-delta-reign-teased-november-release",
       "notes": "Auto-extracted from a news article — verify before relying on it. The next set this year, called Mega Evolution — Delta Reign  is officially teased in a video. This set is scheduled for release on  November 6, 2026."
+    },
+    {
+      "id": "news-dropstore-pokemon-tcg-30th-celebration-release-date-cards-products-0",
+      "name": "Pokemon TCG 30th Celebration: release date, cards and what Australian collectors should know",
+      "releaseDate": "2026-09-16",
+      "kind": "release",
+      "source": "news",
+      "region": "AU",
+      "url": "https://dropstore.com.au/blogs/news/pokemon-tcg-30th-celebration-release-date-cards-products",
+      "notes": "Auto-extracted from a news article — verify before relying on it."
+    },
+    {
+      "id": "news-dropstore-pokemon-tcg-sets-coming-in-2026-complete-release-calendar-0",
+      "name": "Pokemon TCG Sets Coming in 2026: Complete Release Calendar",
+      "releaseDate": "2026-11-06",
+      "kind": "restock",
+      "source": "news",
+      "region": "AU",
+      "url": "https://dropstore.com.au/blogs/news/pokemon-tcg-sets-coming-in-2026-complete-release-calendar",
+      "notes": "Auto-extracted from a news article — verify before relying on it."
     }
   ]
 }

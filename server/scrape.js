@@ -18,12 +18,14 @@ import kmart from "./adapters/kmart.js";
 import target from "./adapters/target.js";
 import ebgames from "./adapters/ebgames.js";
 import newsPokeguardian from "./adapters/news-pokeguardian.js";
+import newsDropstore from "./adapters/news-dropstore.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const ADAPTERS = [
   { name: "official", run: official },
   { name: "news-pokeguardian", run: newsPokeguardian },
+  { name: "news-dropstore", run: newsDropstore },
   { name: "kmart", run: kmart },
   { name: "target", run: target },
   { name: "ebgames", run: ebgames }
