@@ -1,6 +1,17 @@
 {
-  "generatedAt": "2026-08-04T16:07:26.912Z",
+  "generatedAt": "2026-08-04T18:05:44.208Z",
   "items": [
+    {
+      "id": "set-me5",
+      "name": "Pitch Black (Mega Evolution)",
+      "releaseDate": "2026-07-17",
+      "kind": "release",
+      "source": "official",
+      "region": "GLOBAL",
+      "url": "https://www.pokemon.com/us/pokemon-tcg/",
+      "image": "https://images.scrydex.com/pokemon/me5-logo/logo",
+      "notes": "Official English set · 120 cards"
+    },
     {
       "id": "news-pokeguardian-3271194-0",
       "name": "Mega Evolution - Pitch Black Full Digital Set List Revealed",
