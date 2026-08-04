@@ -1,0 +1,11 @@
+{
+  "name": "pokemon-tcg-alerts-scraper",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Scheduled scraper that publishes feed.json (release dates + retailer restocks) for the Pokémon TCG Alerts extension.",
+  "engines": { "node": ">=18" },
+  "scripts": {
+    "build": "node scrape.js"
+  }
+}

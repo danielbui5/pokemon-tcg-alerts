@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Pokémon TCG Alerts</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <header>
+    <div class="title-row">
+      <h1>Pokémon TCG Alerts</h1>
+      <button id="refresh-btn" title="Refresh live data">⟳</button>
+    </div>
+    <div class="meta-row">
+      <span id="region-label">AU</span>
+      <span id="last-refresh">—</span>
+    </div>
+  </header>
+
+  <nav id="filters">
+    <button data-filter="all" class="active">All</button>
+    <button data-filter="release">Releases</button>
+    <button data-filter="restock">Restocks</button>
+    <button data-filter="starred">★</button>
+  </nav>
+
+  <section id="releases-list"><!-- populated by popup.js --></section>
+
+  <details id="add-panel">
+    <summary>+ Add your own</summary>
+    <div class="panel-body">
+      <input type="text" id="name-input" placeholder="Product name (e.g. Prismatic Evolutions ETB)" />
+      <input type="date" id="date-input" />
+      <input type="text" id="retailer-input" placeholder="Retailer (optional, e.g. EB Games)" />
+      <button id="add-btn">Add</button>
+    </div>
+  </details>
+
+  <details id="settings-panel">
+    <summary>⚙ Settings</summary>
+    <div class="panel-body">
+      <label>Region
+        <select id="region-select">
+          <option value="AU">Australia</option>
+          <option value="US">United States</option>
+          <option value="GLOBAL">Global</option>
+        </select>
+      </label>
+      <label>Restock feed URL (optional)
+        <input type="text" id="feed-input" placeholder="https://…/feed.json" />
+      </label>
+      <label class="checkbox">
+        <input type="checkbox" id="notify-before" /> Remind me the day before too
+      </label>
+      <button id="save-settings-btn">Save settings</button>
+    </div>
+  </details>
+
+  <footer><span id="status"></span></footer>
+
+  <script src="store.js"></script>
+  <script src="calendar.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>
