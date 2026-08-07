@@ -1,6 +1,16 @@
 {
-  "generatedAt": "2026-08-06T14:40:33.854Z",
+  "generatedAt": "2026-08-07T00:17:33.635Z",
   "items": [
+    {
+      "id": "news-pokeguardian-3313621-0",
+      "name": "Deck Crafter&#039;s Collection Revealed",
+      "releaseDate": "2026-10-23",
+      "kind": "release",
+      "source": "news",
+      "region": "GLOBAL",
+      "url": "https://www.pokeguardian.com/3313621_deck-crafter-s-collection-revealed",
+      "notes": "Auto-extracted from a news article — verify before relying on it. A new product named the Deck Crafter&#039;s Collection got revealed scheduled for release on October 23, 2026."
+    },
     {
       "id": "news-pokeguardian-3271194-0",
       "name": "Mega Evolution - Pitch Black Full Digital Set List Revealed",
