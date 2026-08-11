@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-11T18:08:31.663Z",
+  "generatedAt": "2026-08-11T19:24:24.612Z",
   "items": [
     {
       "id": "news-pokeguardian-3313621-0",
@@ -20,26 +20,6 @@
       "region": "GLOBAL",
       "url": "https://www.pokeguardian.com/3231721_pokemon-tcg-mega-evolution-delta-reign-teased-november-release",
       "notes": "Auto-extracted from a news article — verify before relying on it. The next set this year, called Mega Evolution — Delta Reign  is officially teased in a video. This set is scheduled for release on  November 6, 2026."
-    },
-    {
-      "id": "news-dropstore-pokemon-tcg-30th-celebration-release-date-cards-products-0",
-      "name": "Pokemon TCG 30th Celebration: release date, cards and what Australian collectors should know",
-      "releaseDate": "2026-09-16",
-      "kind": "release",
-      "source": "news",
-      "region": "AU",
-      "url": "https://dropstore.com.au/blogs/news/pokemon-tcg-30th-celebration-release-date-cards-products",
-      "notes": "Auto-extracted from a news article — verify before relying on it."
-    },
-    {
-      "id": "news-dropstore-pokemon-tcg-sets-coming-in-2026-complete-release-calendar-0",
-      "name": "Pokemon TCG Sets Coming in 2026: Complete Release Calendar",
-      "releaseDate": "2026-11-06",
-      "kind": "restock",
-      "source": "news",
-      "region": "AU",
-      "url": "https://dropstore.com.au/blogs/news/pokemon-tcg-sets-coming-in-2026-complete-release-calendar",
-      "notes": "Auto-extracted from a news article — verify before relying on it."
     }
   ]
 }
