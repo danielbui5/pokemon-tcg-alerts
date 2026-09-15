@@ -1,6 +1,16 @@
 {
-  "generatedAt": "2026-09-15T15:02:12.532Z",
+  "generatedAt": "2026-09-15T19:02:01.530Z",
   "items": [
+    {
+      "id": "news-pokeguardian-3368431-0",
+      "name": "30th Celebration Full Digital Set List Revealed",
+      "releaseDate": "2026-09-16",
+      "kind": "release",
+      "source": "news",
+      "region": "GLOBAL",
+      "url": "https://www.pokeguardian.com/3368431_30th-celebration-full-digital-set-list-revealed",
+      "notes": "Auto-extracted from a news article — verify before relying on it. 30th Celebration is scheduled to launch on September 16, 2026."
+    },
     {
       "id": "news-pokeguardian-3313621-0",
       "name": "Deck Crafter&#039;s Collection Revealed",
