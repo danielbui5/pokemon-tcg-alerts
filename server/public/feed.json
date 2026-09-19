@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-18T22:35:48.959Z",
+  "generatedAt": "2026-09-19T00:35:52.331Z",
   "items": [
     {
       "id": "set-me55c",
@@ -42,16 +42,6 @@
       "region": "GLOBAL",
       "url": "https://www.pokeguardian.com/3313621_deck-crafter-s-collection-revealed",
       "notes": "Auto-extracted from a news article — verify before relying on it. A new product named the Deck Crafter&#039;s Collection got revealed scheduled for release on October 23, 2026."
-    },
-    {
-      "id": "news-dropstore-one-piece-op17-preorder-australia-0",
-      "name": "One Piece OP-17 Australia: Release Date, Cards and Preorder Alerts",
-      "releaseDate": "2026-08-28",
-      "kind": "release",
-      "source": "news",
-      "region": "AU",
-      "url": "https://dropstore.com.au/blogs/news/one-piece-op17-preorder-australia",
-      "notes": "Auto-extracted from a news article — verify before relying on it."
     },
     {
       "id": "news-dropstore-pokemon-tcg-30th-celebration-release-date-cards-products-0",
