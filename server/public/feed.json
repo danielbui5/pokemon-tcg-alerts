@@ -1,6 +1,28 @@
 {
-  "generatedAt": "2026-09-19T09:10:53.206Z",
+  "generatedAt": "2026-09-19T13:11:37.734Z",
   "items": [
+    {
+      "id": "set-me55c",
+      "name": "30th Celebration: Classic Collection (Mega Evolution)",
+      "releaseDate": "2026-09-16",
+      "kind": "release",
+      "source": "official",
+      "region": "GLOBAL",
+      "url": "https://www.pokemon.com/us/pokemon-tcg/",
+      "image": "https://images.scrydex.com/pokemon/me55c-logo/logo",
+      "notes": "Official English set · 30 cards"
+    },
+    {
+      "id": "set-me55",
+      "name": "30th Celebration (Mega Evolution)",
+      "releaseDate": "2026-09-16",
+      "kind": "release",
+      "source": "official",
+      "region": "GLOBAL",
+      "url": "https://www.pokemon.com/us/pokemon-tcg/",
+      "image": "https://images.scrydex.com/pokemon/me55-logo/logo",
+      "notes": "Official English set · 161 cards"
+    },
     {
       "id": "news-pokeguardian-3368431-0",
       "name": "30th Celebration Full Digital Set List Revealed",
