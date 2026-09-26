@@ -1,6 +1,28 @@
 {
-  "generatedAt": "2026-09-26T07:59:12.238Z",
+  "generatedAt": "2026-09-26T12:41:18.092Z",
   "items": [
+    {
+      "id": "set-me55c",
+      "name": "30th Celebration: Classic Collection (Mega Evolution)",
+      "releaseDate": "2026-09-16",
+      "kind": "release",
+      "source": "official",
+      "region": "GLOBAL",
+      "url": "https://www.pokemon.com/us/pokemon-tcg/",
+      "image": "https://images.scrydex.com/pokemon/me55c-logo/logo",
+      "notes": "Official English set · 30 cards"
+    },
+    {
+      "id": "set-me55",
+      "name": "30th Celebration (Mega Evolution)",
+      "releaseDate": "2026-09-16",
+      "kind": "release",
+      "source": "official",
+      "region": "GLOBAL",
+      "url": "https://www.pokemon.com/us/pokemon-tcg/",
+      "image": "https://images.scrydex.com/pokemon/me55-logo/logo",
+      "notes": "Official English set · 161 cards"
+    },
     {
       "id": "news-dropstore-pokemon-30th-celebration-australia-release-waves-0",
       "name": "Pokemon TCG 30th Celebration in Australia: wave dates and what changed",
