@@ -1,4 +1,15 @@
 {
-  "generatedAt": "2026-10-21T09:45:01.521Z",
-  "items": []
+  "generatedAt": "2026-10-21T14:44:47.842Z",
+  "items": [
+    {
+      "id": "news-dropstore-pokemon-tcg-flowing-fists-release-date-australia-0",
+      "name": "Pokemon TCG Flowing Fists: Release Date and What We Know",
+      "releaseDate": "2026-11-27",
+      "kind": "release",
+      "source": "news",
+      "region": "AU",
+      "url": "https://dropstore.com.au/blogs/news/pokemon-tcg-flowing-fists-release-date-australia",
+      "notes": "Auto-extracted from a news article — verify before relying on it."
+    }
+  ]
 }
