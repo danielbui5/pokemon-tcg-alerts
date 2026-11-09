@@ -1,6 +1,17 @@
 {
-  "generatedAt": "2026-11-09T08:50:33.670Z",
+  "generatedAt": "2026-11-09T19:18:45.316Z",
   "items": [
+    {
+      "id": "set-me6",
+      "name": "Delta Reign (Mega Evolution)",
+      "releaseDate": "2026-11-06",
+      "kind": "release",
+      "source": "official",
+      "region": "GLOBAL",
+      "url": "https://www.pokemon.com/us/pokemon-tcg/",
+      "image": "https://images.scrydex.com/pokemon/me6-logo/logo",
+      "notes": "Official English set · 141 cards"
+    },
     {
       "id": "news-dropstore-pokemon-tcg-flowing-fists-release-date-australia-0",
       "name": "Pokemon TCG Flowing Fists: Release Date and What We Know",
