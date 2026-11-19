@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-19T01:59:06.920Z",
+  "generatedAt": "2026-11-19T09:53:55.088Z",
   "items": [
     {
       "id": "set-me6",
@@ -20,6 +20,16 @@
       "source": "news",
       "region": "AU",
       "url": "https://dropstore.com.au/blogs/news/pokemon-tcg-flowing-fists-release-date-australia",
+      "notes": "Auto-extracted from a news article — verify before relying on it."
+    },
+    {
+      "id": "news-dropstore-pokemon-tcg-sets-coming-in-2026-complete-release-calendar-0",
+      "name": "Pokemon TCG Sets Coming in 2026: Complete Release Calendar",
+      "releaseDate": "2026-11-06",
+      "kind": "restock",
+      "source": "news",
+      "region": "AU",
+      "url": "https://dropstore.com.au/blogs/news/pokemon-tcg-sets-coming-in-2026-complete-release-calendar",
       "notes": "Auto-extracted from a news article — verify before relying on it."
     }
   ]
