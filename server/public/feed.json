@@ -1,6 +1,17 @@
 {
-  "generatedAt": "2026-11-19T18:44:17.039Z",
+  "generatedAt": "2026-11-20T00:58:38.572Z",
   "items": [
+    {
+      "id": "set-me6",
+      "name": "Delta Reign (Mega Evolution)",
+      "releaseDate": "2026-11-06",
+      "kind": "release",
+      "source": "official",
+      "region": "GLOBAL",
+      "url": "https://www.pokemon.com/us/pokemon-tcg/",
+      "image": "https://images.scrydex.com/pokemon/me6-logo/logo",
+      "notes": "Official English set · 141 cards"
+    },
     {
       "id": "news-dropstore-pokemon-tcg-flowing-fists-release-date-australia-0",
       "name": "Pokemon TCG Flowing Fists: Release Date and What We Know",
@@ -19,6 +30,16 @@
       "source": "news",
       "region": "AU",
       "url": "https://dropstore.com.au/blogs/news/pokemon-30th-celebration-australia-release-waves",
+      "notes": "Auto-extracted from a news article — verify before relying on it."
+    },
+    {
+      "id": "news-dropstore-pokemon-one-piece-tcg-events-and-community-guide-for-melbour-0",
+      "name": "Pokemon &amp; One Piece TCG Events and Community Guide for Melbourne 2026",
+      "releaseDate": "2026-11-20",
+      "kind": "restock",
+      "source": "news",
+      "region": "AU",
+      "url": "https://dropstore.com.au/blogs/news/pokemon-one-piece-tcg-events-and-community-guide-for-melbourne-2026",
       "notes": "Auto-extracted from a news article — verify before relying on it."
     },
     {
