@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-27T18:34:06.495Z",
+  "generatedAt": "2026-11-28T01:38:22.524Z",
   "items": [
     {
       "id": "news-dropstore-pokemon-tcg-flowing-fists-release-date-australia-0",
@@ -29,16 +29,6 @@
       "source": "news",
       "region": "AU",
       "url": "https://dropstore.com.au/blogs/news/pokemon-one-piece-tcg-events-and-community-guide-for-melbourne-2026",
-      "notes": "Auto-extracted from a news article — verify before relying on it."
-    },
-    {
-      "id": "news-dropstore-pokemon-tcg-sets-coming-in-2026-complete-release-calendar-0",
-      "name": "Pokemon TCG Sets Coming in 2026: Complete Release Calendar",
-      "releaseDate": "2026-11-06",
-      "kind": "restock",
-      "source": "news",
-      "region": "AU",
-      "url": "https://dropstore.com.au/blogs/news/pokemon-tcg-sets-coming-in-2026-complete-release-calendar",
       "notes": "Auto-extracted from a news article — verify before relying on it."
     }
   ]
